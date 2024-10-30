@@ -1,0 +1,115 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light bg-light">
+  <div class="container-fluid">
+    <img
+      src="/images/flowersbyflora.webp"
+      alt="flowersbyflora"
+      width="100"
+      height="100"
+      class="p-2"
+    />
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            By Pricing
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Below $50</a></li>
+            <li><a class="dropdown-item" href="#">$50 to $80</a></li>
+            <li><a class="dropdown-item" href="#">$80 to $100</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search" method="GET" action="">
+        <select class="form-select" name="category">
+          <option>Categories</option>
+          <option value="1">Graduation</option>
+          <option value="2">Birthdays</option>
+          <option value="3">Appreciation</option>
+        </select>
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          name="name"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<img src="/images/flowers.jpg" class="img-fluid" alt="Flowers" />
+
+<div class="container m-3 p-3">
+  <h2>All Flowers</h2>
+  <h4>Add New Product</h4>
+  <a href="/products/create" class="btn btn-outline-success">Create</a>
+</div>
+
+<div class="container">
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {{#each products}}
+      <div class="col">
+        <div class="card shadow-sm">
+          <img
+            src="/images/bouquet.jpg"
+            alt="Flowers"
+            width="100%"
+            height="225"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          />
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="row">
+                <div class="col">
+                  <p>{{this.name}}</p>
+                  <p>{{this.description}}</p>
+                  <p>Category: {{this.category_name}}</p>
+                </div>
+              </div>
+
+              <div class="btn-group">
+                <a
+                  href="/products/{{this.product_id}}"
+                  class="btn btn-sm btn-outline-secondary"
+                >View</a>
+                <a
+                  href="/products/{{this.product_id}}/edit"
+                  class="btn btn-sm btn-outline-secondary"
+                >Edit</a>
+                <a
+                  href="/products/{{this.product_id}}/delete"
+                  class="btn btn-sm btn-outline-secondary"
+                >Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>

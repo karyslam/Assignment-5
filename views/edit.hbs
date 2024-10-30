@@ -1,0 +1,118 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light bg-light">
+  <div class="container-fluid">
+    <img
+      src="/images/flowersbyflora.webp"
+      alt="flowersbyflora"
+      width="100"
+      height="100"
+      class="p-2"
+    />
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Categories
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Graduation</a></li>
+            <li><a class="dropdown-item" href="#">Birthdays</a></li>
+            <li><a class="dropdown-item" href="#">Appreciation</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            By Pricing
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Below $50</a></li>
+            <li><a class="dropdown-item" href="#">$50 to $80</a></li>
+            <li><a class="dropdown-item" href="#">$80 to $100</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<img src="/images/flowers.jpg" class="img-fluid" alt="Flowers" />
+
+<div class="container">
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <form method="post" action="/products/{{product.product_id}}/edit">
+      <div class="m-3">
+        <h1>Edit Form</h1>
+      </div>
+      <div class="mb-3">
+        <label for="productName" class="form-label">Product Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productName"
+          value="{{product.name}}"
+          name="productName"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="productDescription" class="form-label">Product Description</label>
+        <textarea
+          class="form-control"
+          id="productDescription"
+          rows="3"
+          name="productDescription"
+        >{{product.description}}</textarea>
+      </div>
+      <div class="mb-3">
+        <select
+          class="form-select"
+          aria-label="Product Category"
+          name="productCategory"
+        >
+          {{#each categories}}
+            <option value="{{this.category_id}}">{{this.category_name}}</option>
+          {{/each}}
+          <option
+            value="{{selectedCategory.category_id}}"
+            selected
+          >{{selectedCategory.category_name}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Confirm Edit</button>
+    </form>
+  </div>
+</div>
